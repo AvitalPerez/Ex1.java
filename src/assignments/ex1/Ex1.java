@@ -55,9 +55,10 @@ public class Ex1 {
                         }
                 }
             }
-            if ( !a.contains("b") &&  ) {
+                boolean allDigits = a.matches("\\d+");
+            if (allDigits) {
                 ans = true;
-            }
+                }
             }
             return ans;
         }
