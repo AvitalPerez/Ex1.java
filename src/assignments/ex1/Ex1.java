@@ -43,13 +43,10 @@ public class Ex1 {
             // Is there any b?
             if ( a.contains("b")) {
                 int indexOfb = a.indexOf('b');
-
                 // Is my b the only one?
                 if ( a.indexOf('b') == a.lastIndexOf('b') ) {
-
                     // Is my b first/last?
                     if ( (indexOfb != 0) && (indexOfb != a.length() - 1) ) {
-
                         // Are other i char?
                         for ( int i = indexOfb + 1 ; i < a.length() ; i++ ) {
                             if (!Character.isLetter(a.charAt(i))) {
@@ -58,7 +55,9 @@ public class Ex1 {
                         }
                 }
             }
-
+            if ( !a.contains("b") &&  ) {
+                ans = true;
+            }
             }
             return ans;
         }

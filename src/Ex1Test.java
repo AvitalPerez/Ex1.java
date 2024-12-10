@@ -28,7 +28,7 @@ public class Ex1Test {
                 boolean ok = Ex1.isNumber(good[i]);
                 assertTrue(ok);
             }
-            String[] not_good = {"b2", "2b2", "1G3bG", " BbG", "0bbA", "abB", "!@b2", "A", "1bb2"};
+            String[] not_good = {"6b", "b2", "2b2", "1G3bG", " BbG", "0bbA", "abB", "!@b2", "A", "1bb2"};
             for(int i=0;i<not_good.length;i=i+1) {
                 boolean not_ok = Ex1.isNumber(not_good[i]);
                 assertFalse(not_ok);
@@ -36,6 +36,7 @@ public class Ex1Test {
         }
         @Test
         void int2NumberTest() {
+            assertEquals(11, "1011b2");
            // implement this test
         }
         @Test
