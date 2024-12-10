@@ -36,18 +36,15 @@ public class Ex1 {
         public static boolean isNumber(String a) {
             boolean ans = false;
 
-            if ( (a == null)  ) {
+            if ( a == null || a.isEmpty() ) {
                 ans = false;
             }
 
-            // Is there any b?
             if ( a.contains("b")) {
                 int indexOfb = a.indexOf('b');
-                // Is my b the only one?
+
                 if ( a.indexOf('b') == a.lastIndexOf('b') ) {
-                    // Is my b first/last?
                     if ( (indexOfb != 0) && (indexOfb != a.length() - 1) ) {
-                        // Are other i char?
                         for ( int i = indexOfb + 1 ; i < a.length() ; i++ ) {
                             if (!Character.isLetter(a.charAt(i))) {
                                 ans = true;
@@ -56,8 +53,8 @@ public class Ex1 {
                 }
             }
                 boolean allDigits = a.matches("\\d+");
-            if (allDigits) {
-                ans = true;
+                      if (allDigits) {
+                      ans = true;
                 }
             }
             return ans;
