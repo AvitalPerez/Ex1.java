@@ -34,26 +34,31 @@ public class Ex1 {
          * @return true iff the given String is in a number format
          */
         public static boolean isNumber(String a) {
-            boolean ans = true;
+            boolean ans = false;
 
             if ( (a == null)  ) {
                 ans = false;
             }
 
+            // Is there any b?
             if ( a.contains("b")) {
-                int indexOfB = a.indexOf('b');
-                if ( (a.charAt(0) == 'b') || (a.charAt(a.length() - 1) == 'b') ) {
-                    ans = false;
-                }
-                String num = a.substring(0, indexOfB);
-                int base = Integer.parseInt(a.substring(indexOfB + 1));
+                int indexOfb = a.indexOf('b');
 
+                // Is my b the only one?
+                if ( a.indexOf('b') == a.lastIndexOf('b') ) {
+
+                    // Is my b first/last?
+                    if ( (indexOfb != 0) && (indexOfb != a.length() - 1) ) {
+
+                        // Are other i char?
+                        for ( int i = indexOfb + 1 ; i < a.length() ; i++ ) {
+                            if (!Character.isLetter(a.charAt(i))) {
+                                ans = true;
+                            }
+                        }
+                }
             }
 
-            for ( int i = 0 ; i < a.length() - 1 ; i++ ) {
-                if ( a.charAt(i) >= base ) {
-                    ans = false;
-                }
             }
             return ans;
         }
