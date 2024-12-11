@@ -1,4 +1,7 @@
 package assignments.ex1;
+
+import org.junit.platform.engine.support.descriptor.FileSystemSource;
+
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
@@ -14,28 +17,51 @@ package assignments.ex1;
 public class Ex1 {
 
 
+    // checks if num is in the right ASCII range
+    public static boolean checkNum ( String num ) {
+        for (int i = 0; i < num.length() ; i++) {
+            int c = (int)num.charAt(i);
+            if ( !(c >= 48 && c<= 57) && !(c >= 65 && c<= 71)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Checks if num is converted to a valid base
+    public static boolean isValid ( String num, String b ) {
+        int base = (int)b.charAt(0);
+        for (int i = 0; i < num.length(); i++) {
+            if ( num.charAt(i) >= base ) {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
 
         /**
          * Convert the given number (num) to a decimal representation (as int).
          * It the given number is not in a valid format returns -1.
          * @param num a String representing a number in basis [2,16]
-         * @return //48-57 65-71
+         * @return
          */
-        public static boolean checkNum ( String num ) {
-            for (int i = 0; i < num.length() ; i++) {
-                int c = (int)num.charAt(i);
-                if ( !(c >= 48 && c<= 57) && !(c >= 65 && c<= 71)) {
-                   return false;
-                }
-            }
-            return true;
-        }
 
         public static int number2Int(String num) {
-            int ans = -1;
+
+            String number = num.substring(0, num.indexOf("b"));
+            String base = num.substring(num.indexOf("b") + 1);
+
+            if ( !isNumber() ) {
+
+            }
+
+            int ans = Integer.parseInt(number, Integer.parseInt(base));
 
             return ans;
         }
+
         /**
          * This static function checks if the given String (g) is in a valid "number" format.
          * @param a a String representing a number
@@ -51,20 +77,28 @@ public class Ex1 {
             if ( a.contains("b")) {
                 int indexOfb = a.indexOf('b');
                 // Is be the only one + is it in the right place
-                if (indexOfb == a.length() - 1 && indexOfb != 0) {
+                if (indexOfb != a.length() - 1 && indexOfb != 0) {
                     // Split num and base to 2 Strings
                     String num = a.substring(0, indexOfb);
                     String base = a.substring(indexOfb + 1);
                     // Are num and base in a valid range?   10b2
                   if ( checkNum(num) && (base.matches("[2-9]+") || base.matches("[A-G]+")) ) {
-                      return true;
+                      if ( isValid(num, base)) {
+                          return true;
+                      }
+                      return false;
                   }{
                       return false;
                     }
-                } else {
+                }
+                // if b is not in the right place
+                else
+                {
                     return false;
                 }
-            }else{
+            } // if String doesn't contain b
+            else
+            {
                 return (a.matches("\\d+"));
             }
         }

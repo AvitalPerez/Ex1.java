@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Ex1Main {
     public static void main(String[] args) {
-        System.out.println(Ex1.isNumber("99999A"));
+        System.out.println(Ex1.number2Int("12b2"));
         Scanner sc = new Scanner(System.in);
         String num1 = "", num2="", quit = "quit";
         while (!num1.equals(quit) && !num2.equals(quit)) {

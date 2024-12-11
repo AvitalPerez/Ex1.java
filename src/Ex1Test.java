@@ -27,7 +27,6 @@ public class Ex1Test {
             for(int i=0;i<good.length;i=i+1) {
                 boolean ok = Ex1.isNumber(good[i]);
                 assertTrue(ok);
-
             }
             String[] not_good = {"6b", "b2", "2b2", "1G3bG", " BbG", "0bbA", "abB", "!@b2", "A", "1bb2"};
             for(int i=0;i<not_good.length;i=i+1) {
