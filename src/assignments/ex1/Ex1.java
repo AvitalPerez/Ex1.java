@@ -36,27 +36,25 @@ public class Ex1 {
         public static boolean isNumber(String a) {
             boolean ans = false;
 
-            if ( a == null || a.isEmpty() ) {
-                ans = false;
+            if ( a == null || a.isEmpty() || a.contains(" ") ) {
+                return false;
             }
 
             if ( a.contains("b")) {
                 int indexOfb = a.indexOf('b');
+                // Is be the only one + is it in the right place
+                if (a.indexOf('b') == a.lastIndexOf('b') && indexOfb == a.length() - 1 && indexOfb != 0) {
+                    // Split num and base to 2 Strings
+                    String num = a.substring(0, indexOfb);
+                    String base = a.substring(indexOfb + 1);
+                    // Are num and base in a valid range?   10b2
+                    if ((num.matches("[0-9]+") && base.matches("[2-9]+")) ||  // num et base numériques
+                            (num.matches("[A-G]+") && base.matches("[A-G]+"))) { // num et base alphabétiques
+                        ans = true;
+                    }
+                }
+            }
 
-                if ( a.indexOf('b') == a.lastIndexOf('b') ) {
-                    if ( (indexOfb != 0) && (indexOfb != a.length() - 1) ) {
-                        for ( int i = indexOfb + 1 ; i < a.length() ; i++ ) {
-                            if (!Character.isLetter(a.charAt(i))) {
-                                ans = true;
-                            }
-                        }
-                }
-            }
-                boolean allDigits = a.matches("\\d+");
-                      if (allDigits) {
-                      ans = true;
-                }
-            }
             return ans;
         }
 
