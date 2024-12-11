@@ -19,13 +19,21 @@ public class Ex1 {
          * Convert the given number (num) to a decimal representation (as int).
          * It the given number is not in a valid format returns -1.
          * @param num a String representing a number in basis [2,16]
-         * @return
+         * @return //48-57 65-71
          */
+        public static boolean checkNum ( String num ) {
+            for (int i = 0; i < num.length() ; i++) {
+                int c = (int)num.charAt(i);
+                if ( !(c >= 48 && c<= 57) && !(c >= 65 && c<= 71)) {
+                   return false;
+                }
+            }
+            return true;
+        }
+
         public static int number2Int(String num) {
             int ans = -1;
-            // add your code here
 
-            ////////////////////
             return ans;
         }
         /**
@@ -43,19 +51,22 @@ public class Ex1 {
             if ( a.contains("b")) {
                 int indexOfb = a.indexOf('b');
                 // Is be the only one + is it in the right place
-                if (a.indexOf('b') == a.lastIndexOf('b') && indexOfb == a.length() - 1 && indexOfb != 0) {
+                if (indexOfb == a.length() - 1 && indexOfb != 0) {
                     // Split num and base to 2 Strings
                     String num = a.substring(0, indexOfb);
                     String base = a.substring(indexOfb + 1);
                     // Are num and base in a valid range?   10b2
-                    if ((num.matches("[0-9]+") && base.matches("[2-9]+")) ||  // num et base numériques
-                            (num.matches("[A-G]+") && base.matches("[A-G]+"))) { // num et base alphabétiques
-                        ans = true;
+                  if ( checkNum(num) && (base.matches("[2-9]+") || base.matches("[A-G]+")) ) {
+                      return true;
+                  }{
+                      return false;
                     }
+                } else {
+                    return false;
                 }
+            }else{
+                return (a.matches("\\d+"));
             }
-
-            return ans;
         }
 
         /**
