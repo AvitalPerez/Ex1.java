@@ -1,5 +1,7 @@
 import assignments.ex1.Ex1;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.engine.support.descriptor.FileSystemSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,6 +41,23 @@ public class Ex1Test {
             assertEquals(11, "1011b2");
            // implement this test
         }
+
+          @Test
+         void number2Int() {
+
+              String[] good = {"16bF"};
+              for(int i=0;i<good.length;i=i+1) {
+                  boolean ok = Ex1.number2Int(good[i]);
+                  assertEquals(15,"16bF" );
+              }
+              String[] not_good = {" ", "", "12b37"};
+              for(int i=0;i<not_good.length;i=i+1) {
+                  boolean not_ok = Ex1.number2Int(not_good[i]);
+                  assertEquals(-1,"12b37" );
+              }
+
+    }
+
         @Test
         void maxIndexTest() {
             // implement this test

@@ -53,13 +53,12 @@ public class Ex1 {
             String number = num.substring(0, num.indexOf("b"));
             String base = num.substring(num.indexOf("b") + 1);
 
-            if ( !isNumber() ) {
-
+            if ( !isNumber(num) ) {
+                System.out.println("!");
+                return -1;
             }
 
-            int ans = Integer.parseInt(number, Integer.parseInt(base));
-
-            return ans;
+            return Integer.parseInt(number, Integer.parseInt(base));
         }
 
         /**
