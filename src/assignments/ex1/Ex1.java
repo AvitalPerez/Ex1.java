@@ -162,17 +162,17 @@ public class Ex1 {
          */
         public static int maxIndex(String[] arr) {
             int max = 0;
-            int i = 0;
-            String index = arr[i];
 
-            for ( i = 0; i < arr.length ; i++ ) {
-                if ( index != null && index != "-1" ) {
-                    int ConvertedIndex = number2Int(index);
-                    if (ConvertedIndex > max) {
-                        max = ConvertedIndex;
+            for (int i = 0; i < arr.length; i++) {
+                if ( !isNumber(arr[i])) {
+                    return -1;
+                }
+
+                    int indexValue = number2Int(arr[i]);
+                    if (indexValue > max) {
+                        max = indexValue;
                     }
                 }
-            }
             return max;
         }
 }
