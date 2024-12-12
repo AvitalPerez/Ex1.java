@@ -18,10 +18,10 @@ public class Ex1 {
 
 
     // checks if num is in the right ASCII range
-    public static boolean checkNum ( String num ) {
-        for (int i = 0; i < num.length() ; i++) {
-            int c = (int)num.charAt(i);
-            if ( !(c >= 48 && c<= 57) && !(c >= 65 && c<= 71)) {
+    public static boolean checkNum(String num) {
+        for (int i = 0; i < num.length(); i++) {
+            int c = (int) num.charAt(i);
+            if (!(c >= 48 && c <= 57) && !(c >= 65 && c <= 71)) {
                 return false;
             }
         }
@@ -29,10 +29,10 @@ public class Ex1 {
     }
 
     //Checks if num is converted to a valid base
-    public static boolean isValid ( String num, String b ) {
-        int base = (int)b.charAt(0);
+    public static boolean isValid(String num, String b) {
+        int base = (int) b.charAt(0);
         for (int i = 0; i < num.length(); i++) {
-            if ( num.charAt(i) >= base ) {
+            if (num.charAt(i) >= base) {
                 return false;
             }
 
@@ -41,104 +41,116 @@ public class Ex1 {
     }
 
 
-        /**
-         * Convert the given number (num) to a decimal representation (as int).
-         * It the given number is not in a valid format returns -1.
-         * @param num a String representing a number in basis [2,16]
-         * @return
-         */
+    /**
+     * Convert the given number (num) to a decimal representation (as int).
+     * It the given number is not in a valid format returns -1.
+     *
+     * @param num a String representing a number in basis [2,16]
+     * @return
+     */
 
-        public static int number2Int(String num) {
+    public static int number2Int(String num) {
 
-            if ( !isNumber(num) || num == null || num.isEmpty() ) {
-                return -1;
-            }
-
-            String number = num.substring(0, num.indexOf("b"));
-            String base = num.substring(num.indexOf("b") + 1);
-            int value = Character.getNumericValue(base.charAt(0));
-
-            return Integer.parseInt(number,value);
+        if (!isNumber(num) || num == null || num.isEmpty()) {
+            return -1;
         }
 
-        /**
-         * This static function checks if the given String (g) is in a valid "number" format.
-         * @param a a String representing a number
-         * @return true iff the given String is in a number format
-         */
-        public static boolean isNumber(String a) {
-            boolean ans = false;
+        String number = num.substring(0, num.indexOf("b"));
+        String base = num.substring(num.indexOf("b") + 1);
+        int value = Character.getNumericValue(base.charAt(0));
 
-            if ( a == null || a.isEmpty() || a.contains(" ")  ) {
-                return false;
-            }
+        return Integer.parseInt(number, value);
+    }
 
-            if ( a.contains("b")) {
-                int indexOfb = a.indexOf('b');
-                // Is be the only one + is it in the right place
-                if (indexOfb != a.length() - 1 && indexOfb != 0) {
-                    // Split num and base to 2 Strings
-                    String num = a.substring(0, indexOfb);
-                    String base = a.substring(indexOfb + 1);
-                    // Are num and base in a valid range?   10b2
-                    if (checkNum(num)) {
-                        if (base.matches("[2-9]") || base.matches("[A-G]")) {
-                            if (isValid(num, base)) {
-                                return true;
-                            }
-                            return false;
-                        }
-                        {
-                            return false;
-                        }
-                    }
-                }
-                // if b is not in the right place
-                else
-                {
-                    return false;
-                }
-            } // if String doesn't contain b
-            else
-            {
-                return (a.matches("\\d+"));
-            }
-            return ans;
-        }
+    /**
+     * This static function checks if the given String (g) is in a valid "number" format.
+     *
+     * @param a a String representing a number
+     * @return true iff the given String is in a number format
+     */
+    public static boolean isNumber(String a) {
+        boolean ans = false;
 
-        /**
-         * Calculate the number representation (in basis base)
-         * of the given natural number (represented as an integer).
-         * If num<0 or base is not in [2,16] the function should return "" (the empty String).
-         * @param num the natural number (include 0).
-         * @param base the basis [2,16]
-         * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
-         */
-        public static String int2Number(int num, int base) {
-            String ans = "";
-
-            if ( num < 0 || base < 2 || base > 16 ) {
-                return ans;
-            }
-
-            ans = Integer.toString(num, base);
-            return ans;
-        }
-
-        /**
-         * Checks if the two numbers have the same value.
-         * @param n1 first number
-         * @param n2 second number
-         * @return true iff the two numbers have the same values.
-         */
-        public static boolean equals(String n1, String n2) {
-
-            if ( n1 == n2 ) {
-                return true;
-            }
-
+        if (a == null || a.isEmpty() || a.contains(" ")) {
             return false;
         }
+
+        if (a.contains("b")) {
+            int indexOfb = a.indexOf('b');
+            // Is be the only one + is it in the right place
+            if (indexOfb != a.length() - 1 && indexOfb != 0) {
+                // Split num and base to 2 Strings
+                String num = a.substring(0, indexOfb);
+                String base = a.substring(indexOfb + 1);
+                // Are num and base in a valid range?   10b2
+                if (checkNum(num)) {
+                    if (base.matches("[2-9]") || base.matches("[A-G]")) {
+                        if (isValid(num, base)) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    {
+                        return false;
+                    }
+                }
+            }
+            // if b is not in the right place
+            else {
+                return false;
+            }
+        } // if String doesn't contain b
+        else {
+            return (a.matches("\\d+"));
+        }
+        return ans;
+    }
+
+    /**
+     * Calculate the number representation (in basis base)
+     * of the given natural number (represented as an integer).
+     * If num<0 or base is not in [2,16] the function should return "" (the empty String).
+     *
+     * @param num  the natural number (include 0).
+     * @param base the basis [2,16]
+     * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
+     */
+    public static String int2Number(int num, int base) {
+        String ans = "";
+
+        if (num < 0 || base < 2 || base > 16) {
+            return ans;
+        }
+
+        ans = Integer.toString(num, base);
+        return ans;
+    }
+
+    /**
+     * Checks if the two numbers have the same value.
+     *
+     * @param n1 first number
+     * @param n2 second number
+     * @return true iff the two numbers have the same values.
+     */
+    public static boolean equals(String n1, String n2) {
+
+        if (!isNumber(n1) || !isNumber(n2)) {
+            return false;
+        }
+
+            int num1 = number2Int(n1);
+            int num2 = number2Int(n2);
+
+            if (num1 == num2) {
+                return true;
+            }
+            return false;
+        }
+
+
+
+
 
         /**
          * This static function search for the array index with the largest number (in value).

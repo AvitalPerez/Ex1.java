@@ -55,11 +55,12 @@ public class Ex1Test {
 
     @Test
     void equalsTest() {
-        assertTrue(Ex1.equals("1011b2", "11b10"));
-        //assertTrue(Ex1.equals("F", "15b10"));
-        //assertFalse(Ex1.equals("101b2", "12b10"));
-        //assertFalse(Ex1.equals("1011b2", null)); // One input is null
-        //assertFalse(Ex1.equals(null, null)); // Both inputs are null
+        assertTrue(Ex1.equals("1011b2", "11bA"));
+        assertFalse(Ex1.equals("1011b2", "11b10"));
+        assertFalse(Ex1.equals("F", "15b10"));
+        assertFalse(Ex1.equals("101b2", "12b10"));
+        assertFalse(Ex1.equals("1011b2", null)); // One input is null
+        assertFalse(Ex1.equals(null, null)); // Both inputs are null
     }
 
     @Test
