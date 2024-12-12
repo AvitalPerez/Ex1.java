@@ -40,17 +40,17 @@ public class Ex1Test {
     @Test
     void int2NumberTest() {
         assertEquals("1011", Ex1.int2Number(11, 2));
-        assertEquals("", Ex1.int2Number(-1, 10)); // Invalid input
-        assertEquals("", Ex1.int2Number(10, 17)); // Invalid base
+        assertEquals("", Ex1.int2Number(-1, 10));
+        assertEquals("", Ex1.int2Number(10, 17));
     }
 
     @Test
     void number2IntTest() {
         assertEquals(11, Ex1.number2Int("1011b2"));
-        assertEquals(-1, Ex1.number2Int("15b10")); //Invalid base
-        assertEquals(-1, Ex1.number2Int("12b37")); // Invalid base
-        assertEquals(-1, Ex1.number2Int("")); // Empty string
-        assertEquals(-1, Ex1.number2Int(null)); // Null input
+        assertEquals(-1, Ex1.number2Int("15b10"));
+        assertEquals(-1, Ex1.number2Int("12b37"));
+        assertEquals(-1, Ex1.number2Int(""));
+        assertEquals(-1, Ex1.number2Int(null));
     }
 
     @Test
@@ -59,20 +59,23 @@ public class Ex1Test {
         assertFalse(Ex1.equals("1011b2", "11b10"));
         assertFalse(Ex1.equals("F", "15b10"));
         assertFalse(Ex1.equals("101b2", "12b10"));
-        assertFalse(Ex1.equals("1011b2", null)); // One input is null
-        assertFalse(Ex1.equals(null, null)); // Both inputs are null
+        assertFalse(Ex1.equals("1011b2", null));
+        assertFalse(Ex1.equals(null, null));
     }
 
     @Test
     void maxIndexTest() {
-        String[] array = {"101b2", "10b16", "1111b2", "123b8"};
-        assertEquals(83, Ex1.maxIndex(array)); // "1111b2" (15 in decimal) is the largest
+        String[] arrayInvalid = {"101b2", "10b16", "1111b2", "123b8"};
+        assertEquals(-1, Ex1.maxIndex(arrayInvalid));
 
-        //String[] arrayWithInvalid = {"10b2", null, "123b10", "12bG"};
-        //assertEquals(2, Ex1.maxIndex(arrayWithInvalid)); // "123b10" (123 in decimal) is the largest
+        String[] array2 = {"101b2", "10bG", "1111b2", "123b8"};
+        assertEquals(83, Ex1.maxIndex(array2));
+
+        String[] arrayWithInvalid = {"10b2", null, "123b10", "12bG"};
+        assertEquals(-1, Ex1.maxIndex(arrayWithInvalid));
 
         String[] allInvalid = {"", null, "12b37", "invalid"};
-        assertEquals(-1, Ex1.maxIndex(allInvalid)); // No valid numbers
+        assertEquals(-1, Ex1.maxIndex(allInvalid));
     }
 }
 
