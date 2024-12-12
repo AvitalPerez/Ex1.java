@@ -50,13 +50,14 @@ public class Ex1 {
 
         public static int number2Int(String num) {
 
+            if ( !isNumber(num) || num == null || num.isEmpty() ) {
+                return -1;
+            }
+
             String number = num.substring(0, num.indexOf("b"));
             String base = num.substring(num.indexOf("b") + 1);
             int value = Character.getNumericValue(base.charAt(0));
 
-            if ( !isNumber(num) || num == null || num.isEmpty() ) {
-                return -1;
-            }
             return Integer.parseInt(number,value);
         }
 
@@ -68,7 +69,7 @@ public class Ex1 {
         public static boolean isNumber(String a) {
             boolean ans = false;
 
-            if ( a == null || a.isEmpty() || a.contains(" ") ) {
+            if ( a == null || a.isEmpty() || a.contains(" ")  ) {
                 return false;
             }
 
@@ -80,13 +81,16 @@ public class Ex1 {
                     String num = a.substring(0, indexOfb);
                     String base = a.substring(indexOfb + 1);
                     // Are num and base in a valid range?   10b2
-                  if ( checkNum(num) && (base.matches("[2-9]+") || base.matches("[A-G]+")) ) {
-                      if ( isValid(num, base)) {
-                          return true;
-                      }
-                      return false;
-                  }{
-                      return false;
+                    if (checkNum(num)) {
+                        if (base.matches("[2-9]") || base.matches("[A-G]")) {
+                            if (isValid(num, base)) {
+                                return true;
+                            }
+                            return false;
+                        }
+                        {
+                            return false;
+                        }
                     }
                 }
                 // if b is not in the right place
@@ -99,6 +103,7 @@ public class Ex1 {
             {
                 return (a.matches("\\d+"));
             }
+            return ans;
         }
 
         /**
