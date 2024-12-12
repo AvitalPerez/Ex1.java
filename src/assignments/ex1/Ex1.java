@@ -52,13 +52,12 @@ public class Ex1 {
 
             String number = num.substring(0, num.indexOf("b"));
             String base = num.substring(num.indexOf("b") + 1);
+            int value = Character.getNumericValue(base.charAt(0));
 
-            if ( !isNumber(num) ) {
-                System.out.println("!");
+            if ( !isNumber(num) || num == null || num.isEmpty() ) {
                 return -1;
             }
-
-            return Integer.parseInt(number, Integer.parseInt(base));
+            return Integer.parseInt(number,value);
         }
 
         /**
@@ -145,10 +144,18 @@ public class Ex1 {
          *
          */
         public static int maxIndex(String[] arr) {
-            int ans = 0;
-            // add your code here
+            int max = 0;
+            int i = 0;
+            String index = arr[i];
 
-            ////////////////////
-            return ans;
+            for ( i = 0; i < arr.length ; i++ ) {
+                if ( index != null && index != "-1" ) {
+                    int ConvertedIndex = number2Int(index);
+                    if (ConvertedIndex > max) {
+                        max = ConvertedIndex;
+                    }
+                }
+            }
+            return max;
         }
 }
