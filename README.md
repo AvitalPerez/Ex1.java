@@ -17,7 +17,7 @@ The assignment requires working with numbers as Strings and converting them betw
 
 
 ## Functionality
-The following static functions are implemented in the `Ex1` class:
+The following functions are implemented in the `Ex1` class:
 
 1. **`checkNum(String num)`**: Validates if a given number is in the valid ASCII range for digits (0-9) and letters (A-G).
 2. **`isValid(String num, String b)`**: Checks if the number is valid in the given base.
@@ -27,5 +27,3 @@ The following static functions are implemented in the `Ex1` class:
 6. **`equals(String n1, String n2)`**: Checks if two numbers (in String format) are equal.
 7. **`maxIndex(String[] arr)`**: Finds the index of the largest number in an array of number Strings.
 
-
-.
