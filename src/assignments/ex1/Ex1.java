@@ -112,9 +112,12 @@ public class Ex1 {
          */
         public static String int2Number(int num, int base) {
             String ans = "";
-            // add your code here
 
-            ////////////////////
+            if ( num < 0 || base < 2 || base > 16 ) {
+                return ans;
+            }
+
+            ans = Integer.toString(num, base);
             return ans;
         }
 
@@ -125,11 +128,12 @@ public class Ex1 {
          * @return true iff the two numbers have the same values.
          */
         public static boolean equals(String n1, String n2) {
-            boolean ans = true;
-            // add your code here
 
-            ////////////////////
-            return ans;
+            if ( n1 == n2 ) {
+                return true;
+            }
+
+            return false;
         }
 
         /**

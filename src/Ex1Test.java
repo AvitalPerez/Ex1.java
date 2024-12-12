@@ -43,20 +43,21 @@ public class Ex1Test {
         }
 
           @Test
-         void number2Int() {
-
+          void number2Int() {
+              // Cas valides
               String[] good = {"16bF"};
-              for(int i=0;i<good.length;i=i+1) {
-                  boolean ok = Ex1.number2Int(good[i]);
-                  assertEquals(15,"16bF" );
-              }
-              String[] not_good = {" ", "", "12b37"};
-              for(int i=0;i<not_good.length;i=i+1) {
-                  boolean not_ok = Ex1.number2Int(not_good[i]);
-                  assertEquals(-1,"12b37" );
+              for (int i = 0; i < good.length; i++) {
+                  int result = Ex1.number2Int(good[i]);
+                  assertEquals(15, result); // "16bF" en base 16 = 15 en base 10
               }
 
-    }
+              // Cas invalides
+              String[] not_good = {" ", "", "12b37"};
+              for (int i = 0; i < not_good.length; i++) {
+                  int result = Ex1.number2Int(not_good[i]);
+                  assertEquals(-1, result); // Cas incorrects doivent renvoyer -1
+              }
+          }
 
         @Test
         void maxIndexTest() {
