@@ -45,8 +45,11 @@ public class Ex1Main {
             int addition = num1Decimal + num2Decimal;
             int multiplication = num1Decimal * num2Decimal;
 
-            System.out.println(num1 + " + " + num2 + " = " + addition);
-            System.out.println(num1 + " * " + num2 + " = " + multiplication);
+            String additionConvert = int2Number(addition, base);
+            String multiplicationConvert = int2Number(multiplication, base);
+
+            System.out.println(num1 + " + " + num2 + " = " + additionConvert + "b" + base);
+            System.out.println(num1 + " * " + num2 + " = " + multiplicationConvert + "b" + base);
 
 
         }
