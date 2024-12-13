@@ -47,10 +47,15 @@ public class Ex1Main {
 
             String additionConvert = int2Number(addition, base);
             String multiplicationConvert = int2Number(multiplication, base);
+            String num3 = additionConvert + "b" + base;
+            String num4 = multiplicationConvert + "b" + base;
+            String[] maxArray = {num1, num2, num3, num4};
+            int max = maxIndex(maxArray);
+            String maxString = maxArray[max];
 
             System.out.println(num1 + " + " + num2 + " = " + additionConvert + "b" + base);
             System.out.println(num1 + " * " + num2 + " = " + multiplicationConvert + "b" + base);
-
+            System.out.println("Max number over [" + num1 + "," + num2 + "," + num3 + "," + num4 + "] is: " + maxString );
 
         }
 

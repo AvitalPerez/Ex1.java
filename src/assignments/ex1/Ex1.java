@@ -139,40 +139,37 @@ public class Ex1 {
             return false;
         }
 
-            int num1 = number2Int(n1);
-            int num2 = number2Int(n2);
+        int num1 = number2Int(n1);
+        int num2 = number2Int(n2);
 
-            if (num1 == num2) {
-                return true;
+        if (num1 == num2) {
+            return true;
+        }
+        return false;
+    }
+
+
+    /**
+     * This static function search for the array index with the largest number (in value).
+     * In case there are more than one maximum - returns the first index.
+     * Note: you can assume that the array is not null and is not empty, yet it may contain null or none-valid numbers (with value -1).
+     *
+     * @param arr an array of numbers
+     * @return the index in the array in with the largest number (in value).
+     */
+    public static int maxIndex(String[] arr) {
+        int max = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (!isNumber(arr[i])) {
+                return -1;
             }
-            return false;
+
+            int indexValue = number2Int(arr[i]);
+            if (indexValue > number2Int(arr[max])) {
+                max = i;
+            }
         }
-
-
-
-
-
-        /**
-         * This static function search for the array index with the largest number (in value).
-         * In case there are more than one maximum - returns the first index.
-         * Note: you can assume that the array is not null and is not empty, yet it may contain null or none-valid numbers (with value -1).
-         * @param arr an array of numbers
-         * @return the index in the array in with the largest number (in value).
-         *
-         */
-        public static int maxIndex(String[] arr) {
-            int max = 0;
-
-            for (int i = 0; i < arr.length; i++) {
-                if ( !isNumber(arr[i])) {
-                    return -1;
-                }
-
-                    int indexValue = number2Int(arr[i]);
-                    if (indexValue > max) {
-                        max = indexValue;
-                    }
-                }
-            return max;
-        }
+        return max;
+    }
 }

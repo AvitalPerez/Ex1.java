@@ -69,7 +69,7 @@ public class Ex1Test {
         assertEquals(-1, Ex1.maxIndex(arrayInvalid));
 
         String[] array2 = {"101b2", "10bG", "1111b2", "123b8"};
-        assertEquals(83, Ex1.maxIndex(array2));
+        assertEquals(3, Ex1.maxIndex(array2));
 
         String[] arrayWithInvalid = {"10b2", null, "123b10", "12bG"};
         assertEquals(-1, Ex1.maxIndex(arrayWithInvalid));
